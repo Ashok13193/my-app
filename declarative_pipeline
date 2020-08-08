@@ -1,7 +1,7 @@
 pipeline{
-agent any
-stages{
-  stage("GIT CHECKOUT")
-}
-
+    agent any
+    scripts{
+        script("GIT CHECKOUT")
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/Ashok13193/my-app/']]])
+    }
 }
